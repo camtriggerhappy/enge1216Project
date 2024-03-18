@@ -18,6 +18,7 @@ Tone t4;
 Tone t5;
 Tone t6;
 Tone t7;
+LiquidCrystal_I2C lcd(serial, 128, 64)
 
 void setup() {
   // put your setup code here, to run once:
@@ -49,18 +50,25 @@ void setup() {
 void loop() {
   if (digitalRead(2)) {
     play(bOctaves[currentOctave]);
+    lcd.print(bOctaves[currentOctave]);
   } else if (digitalRead(3)) {
     play(aOctaves[currentOctave]);
+    lcd.print(aOctaves[currentOctave]);
   } else if (digitalRead(4)) {
     play(gOctaves[currentOctave]);
+    lcd.print(gOctaves[currentOctave]);
   } else if (digitalRead(5)) {
     play(fOctaves[currentOctave]);
+    lcd.print(fOctaves[currentOctave]);
   } else if (digitalRead(6)) {
     play(eOctaves[currentOctave]);
+    lcd.print(eOctaves[currentOctave]);
   } else if (digitalRead(7)) {
     play(dOctaves[currentOctave]);
+    lcd.print(dOctaves[currentOctave]);
   } else if (digitalRead(8)) [
     play(cOctaves[currentOctave]);
+    lcd.print(cOctaves[currentOctave]);
   ] else if (digitalRead(9)) {
     currentOctave++;
   } else if (digitalRead(10)) {
