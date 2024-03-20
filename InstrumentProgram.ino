@@ -62,24 +62,25 @@ void setup() {
 void loop() {
   lcd.clearDisplay();
   if (digitalRead(2)) {
-    t1.play(aOctaves[currentOctave]);
+    keyTone(1);
 
   } else if (digitalRead(3)) {
-    t1.play(bOctaves[currentOctave]);
+    keyTone(3);
 
   } else if (digitalRead(4)) {
-    t1.play(cOctaves[currentOctave]);
+    keyTone(5);
 
   } else if (digitalRead(5)) {
-    t1.play(dOctaves[currentOctave]);
+    keyTone(6);
 
   } else if (digitalRead(6)) {
-    t1.play(eOctaves[currentOctave]);
+    keyTone(8);
 
   } else if (digitalRead(7)) {
-    t1.play(fOctaves[currentOctave]);
+    keyTone(10);
 
   } else if (digitalRead(8)) {
+    keyTone(12);
 
   } else if (digitalRead(9)) {
 
@@ -107,4 +108,13 @@ void loop() {
   lcd.println(currentOctave);
   lcd.display();
   Serial.println(currentOctave);
+}
+
+void keyTone(float i)
+{
+  // TODO: test and fill in "max input" and "max pitch interval wanted"
+  // float noise = random(-analogRead(A0) / "max input" * "max pitch interval wanted", analogRead(A0)/"max input" * "max pitch interval wanted");
+  // float pitchOffest = (analogRead(A0) / "max input" - 0.5) * "max pitch interval wanted";
+  t1.play(pow(2, (currentOctave * 12 + i - 49 - 9) / 12) * 440);
+  // t1.play(pow(2, (currentOctave * 12 + i - 49 - 9 + noise + pitchOffest) / 12) * 440);
 }
